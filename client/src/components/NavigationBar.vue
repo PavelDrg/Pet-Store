@@ -8,6 +8,9 @@
     <router-link to="/products">
       <v-btn> Products </v-btn>
     </router-link>
+    <router-link to="/add">
+      <v-btn> Admin </v-btn>
+    </router-link>
   </v-app-bar>
 </template>
 

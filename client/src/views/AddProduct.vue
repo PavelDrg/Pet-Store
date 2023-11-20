@@ -1,5 +1,5 @@
 <template>
-  <div class="page-wrapper">
+  <div class="page-wrapper add">
     <v-form @submit.prevent="submitForm">
       <v-text-field v-model="formData.title" label="Title"></v-text-field>
       <v-text-field
@@ -61,4 +61,12 @@ const submitForm = () => {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 5rem 0;
+}
+</style>

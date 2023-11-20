@@ -1,11 +1,25 @@
 <template>
   <div class="page-wrapper">
-    <p v-if="products.length > 0">{{ products[0] }}</p>
-    <p v-else>Loading...</p>
+    <v-container>
+      <v-row>
+        <v-col
+          v-for="(product, index) in productsX"
+          :key="index"
+          cols="12"
+          md="4"
+        >
+          <ProductCard :product="product" />
+        </v-col>
+      </v-row>
+    </v-container>
+
+    <!-- <p v-if="products.length > 0">{{ products[0] }}</p>
+    <p v-else>Loading...</p> -->
   </div>
 </template>
 
 <script setup>
+import ProductCard from "@/components/ProductCard.vue";
 import axios from "axios";
 import { ref } from "vue";
 
@@ -21,6 +35,9 @@ const init = async () => {
 };
 
 init();
+
+// Use computed property to transform the 'products' array
+const productsX = products;
 </script>
 
 <style scoped></style>

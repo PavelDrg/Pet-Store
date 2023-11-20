@@ -1,20 +1,20 @@
 <template>
   <v-card>
     <!-- Product Photo -->
-    <v-img :src="product.image" alt="Product Photo"></v-img>
+    <v-img :src="props.product.image" alt="Product Photo"></v-img>
 
     <!-- Product Information -->
     <v-card-title primary-title>
       <div>
-        <h3 class="headline mb-0">{{ product.name }}</h3>
-        <div>Price: {{ product.price }}$</div>
-        <div>Stock: {{ product.stock }}</div>
+        <h3 class="headline mb-0">{{ props.product.title }}</h3>
+        <div>Price: {{ props.product.price }}$</div>
+        <div>Stock: {{ props.product.stock }}</div>
       </div>
     </v-card-title>
 
     <!-- Product Description -->
     <v-card-text>
-      {{ product.description }}
+      {{ props.product.contents }}
     </v-card-text>
 
     <!-- Actions (Add to Cart and View) -->
@@ -38,6 +38,7 @@ const props = defineProps({
 const addToCart = () => {
   console.log("Add to Cart");
 };
+
 const viewDetails = () => {
   console.log("View Details");
 };
