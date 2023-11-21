@@ -17,6 +17,8 @@ const pool = mysql
   })
   .promise();
 
+///////////////////////////// Products /////////////////////////////
+
 export async function getProducts() {
   const [rows] = await pool.query("SELECT * FROM products");
   return rows;
@@ -43,15 +45,12 @@ export async function createProduct(product) {
   return getProduct(id);
 }
 
-// const result = await createProduct({
-//   title: "test",
-//   price: 10.25,
-//   stock: 10,
-//   contents: "descriere tra la la",
-//   img_url: "test_img_url",
-//   created: "2021-01-01",
-// });
-// console.log(result);
+export async function deleteProduct(id) {
+  const result = await pool.query(`DELETE FROM products WHERE id = ?`, [id]);
+  return result[0].affectedRows > 0;
+}
+
+///////////////////////////// Users /////////////////////////////
 
 export async function getUsers() {
   const [rows] = await pool.query("SELECT * FROM users");
@@ -85,5 +84,5 @@ export async function verifyUserCredentials(email, parola) {
     [email, parola]
   );
 
-  return rows.length === 1; // Returns true if there's a match
+  return rows.length > 0; // Returns true if there's a match
 }

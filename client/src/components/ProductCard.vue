@@ -20,13 +20,14 @@
     <!-- Actions (Add to Cart and View) -->
     <v-card-actions>
       <v-btn @click="addToCart" color="primary">Add to Cart</v-btn>
-      <v-btn @click="viewDetails" color="secondary">View Details</v-btn>
+      <v-btn @click="deleteProduct" color="secondary">Delete</v-btn>
     </v-card-actions>
   </v-card>
 </template>
 
 <script setup>
-import { defineProps } from "vue";
+import axios from "axios";
+import { defineProps, defineEmits } from "vue";
 
 const props = defineProps({
   product: {
@@ -39,9 +40,26 @@ const addToCart = () => {
   console.log("Add to Cart");
 };
 
-const viewDetails = () => {
-  console.log("View Details");
+const deleteProduct = () => {
+  axios
+    .delete(`http://localhost:8000/products/${props.product.id}`)
+    .then((response) => {
+      if (response.status === 200) {
+        // Perform actions when deletion is successful
+        console.log("Product deleted successfully");
+        emit("deleteProduct");
+        // Optionally, update the UI to reflect the deletion
+      } else if (response.status === 404) {
+        console.log("Product not found");
+      }
+      // Handle other status codes if needed
+    })
+    .catch((error) => {
+      console.log("Error:", error);
+    });
 };
+
+const emit = defineEmits(["deleteProduct"]);
 </script>
 
 <style scoped></style>

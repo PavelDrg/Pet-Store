@@ -1,5 +1,6 @@
 <template>
-  <div class="page-wrapper add">
+  <div class="page-wrapper mic">
+    <h1>Add Product</h1>
     <v-form @submit.prevent="submitForm">
       <v-text-field v-model="formData.title" label="Title"></v-text-field>
       <v-text-field
@@ -19,7 +20,9 @@
         label="Created"
         type="date"
       ></v-date-picker>
-      <v-btn type="submit" color="primary">Submit</v-btn>
+      <v-btn type="submit" color="primary"
+        >------------------} Submit {------------------</v-btn
+      >
     </v-form>
   </div>
 </template>
@@ -61,12 +64,4 @@ const submitForm = () => {
 };
 </script>
 
-<style scoped>
-.add {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin: 5rem 0;
-}
-</style>
+<style scoped></style>

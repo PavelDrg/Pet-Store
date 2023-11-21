@@ -1,7 +1,13 @@
 import express from "express";
 
-import { getProducts, getProduct, createProduct } from "./database.js";
+import {
+  getProducts,
+  getProduct,
+  createProduct,
+  deleteProduct,
+} from "./database.js";
 import { getUsers, getUser, createUser, deleteUser } from "./database.js";
+// import { verifyUserCredentials } from "./database.js";
 import bodyParser from "body-parser";
 
 const app = express();
@@ -39,6 +45,21 @@ app.post("/products", async (req, res) => {
     created,
   });
   res.status(201).send(product);
+});
+
+app.delete("/products/:id", async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    const deleted = await deleteProduct(id);
+    if (deleted) {
+      res.status(200).send("Product deleted successfully");
+    } else {
+      res.status(404).send("Product not found");
+    }
+  } catch (error) {
+    res.status(500).send("Error deleting product");
+  }
 });
 
 ///////////////////////////// Users /////////////////////////////
@@ -92,19 +113,19 @@ app.listen(8000, () => {
 
 ///////////////////////////// Verificare parola / LogIn /////////////////////////////
 
-function isAuthenticated(req, res, next) {
-  console.log(req.session);
-  if (req.session && req.session.user) {
-    return next();
-  }
-  return res.status(401).send("Unauthorized");
-}
+// function isAuthenticated(req, res, next) {
+//   console.log(req.session);
+//   if (req.session && req.session.user) {
+//     return next();
+//   }
+//   return res.status(401).send("Unauthorized");
+// }
 
-app.post("/login", (req, res) => {
-  const { email, parola } = req.body;
-  const user = verifyUserCredentials(email, parola);
-  if (user) {
-    res.status(200).send("Login successful");
-  }
-  res.status(401).send("Invalid credentials");
-});
+// app.post("/login", (req, res) => {
+//   const { email, parola } = req.body;
+//   const user = verifyUserCredentials(email, parola);
+//   if (user) {
+//     res.status(200).send("Login successful");
+//   }
+//   res.status(401).send("Invalid credentials");
+// });

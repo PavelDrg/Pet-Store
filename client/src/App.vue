@@ -11,6 +11,13 @@ import NavigationBar from "./components/NavigationBar.vue";
 
 <style>
 .page-wrapper {
-  padding-top: 4rem;
+  padding-top: 6rem;
+}
+
+.mic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 </style>
