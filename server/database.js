@@ -52,3 +52,27 @@ export async function createProduct(product) {
 //   created: "2021-01-01",
 // });
 // console.log(result);
+
+export async function getUsers() {
+  const [rows] = await pool.query("SELECT * FROM users");
+  return rows;
+}
+
+export async function getUser(id) {
+  const [rows] = await pool.query(`SELECT * FROM users WHERE id = ?`, [id]);
+  return rows[0];
+}
+
+export async function createUser(user) {
+  const [result] = await pool.query(
+    `INSERT INTO users (nume, email, parola, adress, telephone) VALUES (?, ?, ?, ?, ?)`,
+    [user.nume, user.email, user.parola, user.adress, user.telephone]
+  );
+  const id = result.insertId;
+  return getUser(id);
+}
+
+export async function deleteUser(id) {
+  const result = await pool.query(`DELETE FROM users WHERE id = ?`, [id]);
+  return result[0].affectedRows > 0;
+}

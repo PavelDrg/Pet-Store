@@ -1,6 +1,7 @@
 import express from "express";
 
 import { getProducts, getProduct, createProduct } from "./database.js";
+import { getUsers, getUser, createUser, deleteUser } from "./database.js";
 
 const app = express();
 
@@ -35,6 +36,46 @@ app.post("/products", async (req, res) => {
     created,
   });
   res.status(201).send(product);
+});
+
+///////////////////////////// Users /////////////////////////////
+
+app.get("/users", async (req, res) => {
+  const users = await getUsers();
+  res.send(users);
+});
+
+app.get("/users/:id", async (req, res) => {
+  const id = req.params.id;
+  const user = await getUser(id);
+  res.send(user);
+});
+
+app.post("/users", async (req, res) => {
+  const { nume, email, parola, adress, telephone } = req.body;
+  const user = await createUser({
+    nume,
+    email,
+    parola,
+    adress,
+    telephone,
+  });
+  res.status(201).send(user);
+});
+
+app.delete("/users/:id", async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    const deleted = await deleteUser(id);
+    if (deleted) {
+      res.status(200).send("User deleted successfully");
+    } else {
+      res.status(404).send("User not found");
+    }
+  } catch (error) {
+    res.status(500).send("Error deleting user");
+  }
 });
 
 app.use((err, req, res, next) => {
