@@ -76,3 +76,14 @@ export async function deleteUser(id) {
   const result = await pool.query(`DELETE FROM users WHERE id = ?`, [id]);
   return result[0].affectedRows > 0;
 }
+
+///////////////////////////// Verificare parola / LogIn /////////////////////////////
+
+export async function verifyUserCredentials(email, parola) {
+  const [rows] = await pool.query(
+    "SELECT * FROM users WHERE email = ? AND parola = ?",
+    [email, parola]
+  );
+
+  return rows.length === 1; // Returns true if there's a match
+}

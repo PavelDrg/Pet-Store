@@ -11,6 +11,9 @@
     <router-link to="/register">
       <v-btn> Register </v-btn>
     </router-link>
+    <router-link to="/login">
+      <v-btn> Log In </v-btn>
+    </router-link>
     <!-- <router-link to="/add">
       <v-btn> Admin </v-btn>
     </router-link> -->
