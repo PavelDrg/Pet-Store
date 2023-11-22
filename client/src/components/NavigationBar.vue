@@ -12,11 +12,11 @@
       <v-btn> Register </v-btn>
     </router-link>
     <router-link to="/login">
-      <v-btn> Log In </v-btn>
+      <v-btn v-if="!activeUser"> Log In </v-btn>
     </router-link>
-    <!-- <router-link to="/add">
-      <v-btn> Admin </v-btn>
-    </router-link> -->
+    <router-link to="/login">
+      <v-btn v-if="activeUser"> Log Out </v-btn>
+    </router-link>
     <v-menu
       class="navbar--dropdown"
       offset-y

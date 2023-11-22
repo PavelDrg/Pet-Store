@@ -9,7 +9,15 @@
         <h3 class="headline mb-0">{{ product.title }}</h3>
         <div class="price">
           Price: {{ product.price }}$
-          <v-form class="form" @submit.prevent="submitForm(formData.price)">
+          <v-form
+            class="form"
+            @submit.prevent="submitForm(formData.price)"
+            v-if="
+              activeUser &&
+              activeUser.email === `admin` &&
+              activeUser.parola === `admin`
+            "
+          >
             <v-text-field
               v-model.number="formData.price"
               label="New price"
@@ -31,14 +39,31 @@
     <!-- Actions (Add to Cart and View) -->
     <v-card-actions>
       <v-btn @click="addToCart" color="primary">Add to Cart</v-btn>
-      <v-btn @click="deleteProduct" color="secondary">Delete</v-btn>
+      <v-btn
+        @click="deleteProduct"
+        color="secondary"
+        v-if="
+          activeUser &&
+          activeUser.email === `admin` &&
+          activeUser.parola === `admin`
+        "
+        >Delete</v-btn
+      >
     </v-card-actions>
   </v-card>
 </template>
 
 <script setup>
 import axios from "axios";
-import { defineProps, defineEmits, ref } from "vue";
+import { defineProps, defineEmits, ref, computed } from "vue";
+import { useStore } from "vuex";
+
+const store = useStore();
+
+const activeUser = computed(() => {
+  const user = store.state.userAuthenticated;
+  return user;
+});
 
 const props = defineProps({
   product: {
