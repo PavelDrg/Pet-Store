@@ -17,7 +17,15 @@
     <!-- <router-link to="/add">
       <v-btn> Admin </v-btn>
     </router-link> -->
-    <v-menu class="navbar--dropdown" offset-y>
+    <v-menu
+      class="navbar--dropdown"
+      offset-y
+      v-if="
+        activeUser &&
+        activeUser.email === `admin` &&
+        activeUser.parola === `admin`
+      "
+    >
       <template v-slot:activator="{ props }">
         <v-btn
           class="navbar--button"
@@ -39,8 +47,10 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import { ref, onMounted, onBeforeUnmount, computed } from "vue";
+import { useStore } from "vuex";
 
+const store = useStore();
 const elevation = ref(0);
 const scrollY = ref(0);
 const menuActive = ref(false);
@@ -49,6 +59,11 @@ const handleScroll = () => {
   scrollY.value = window.scrollY;
   elevation.value = scrollY.value > 0 ? 2 : 0;
 };
+
+const activeUser = computed(() => {
+  const user = store.state.userAuthenticated;
+  return user;
+});
 
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);

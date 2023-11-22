@@ -8,7 +8,11 @@
           cols="12"
           md="4"
         >
-          <ProductCard :product="product" @deleteProduct="init" />
+          <ProductCard
+            :product="product"
+            @deleteProduct="init"
+            @updateProduct="init"
+          />
         </v-col>
       </v-row>
     </v-container>

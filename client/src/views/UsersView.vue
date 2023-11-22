@@ -3,7 +3,7 @@
     <v-container>
       <v-row>
         <v-col v-for="(user, index) in users" :key="index" cols="12" md="4">
-          <UserCard :user="user" @deleteUser="init" />
+          <UserCard :user="user" @deleteUser="init" @updateUser="init" />
         </v-col>
       </v-row>
     </v-container>

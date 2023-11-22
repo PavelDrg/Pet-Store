@@ -50,6 +50,14 @@ export async function deleteProduct(id) {
   return result[0].affectedRows > 0;
 }
 
+export async function updateProductPrice(id, newPrice) {
+  const result = await pool.query(
+    `UPDATE products SET price = ? WHERE id = ?`,
+    [newPrice, id]
+  );
+  return result[0].affectedRows > 0;
+}
+
 ///////////////////////////// Users /////////////////////////////
 
 export async function getUsers() {
@@ -76,13 +84,27 @@ export async function deleteUser(id) {
   return result[0].affectedRows > 0;
 }
 
+export async function updateUserEmail(id, newEmail) {
+  const result = await pool.query(`UPDATE users SET email = ? WHERE id = ?`, [
+    newEmail,
+    id,
+  ]);
+  return result[0].affectedRows > 0;
+}
+
 ///////////////////////////// Verificare parola / LogIn /////////////////////////////
 
 export async function verifyUserCredentials(email, parola) {
-  const [rows] = await pool.query(
-    "SELECT * FROM users WHERE email = ? AND parola = ?",
-    [email, parola]
-  );
+  try {
+    const [rows] = await pool.query(
+      "SELECT * FROM users WHERE email = ? AND parola = ?",
+      [email, parola]
+    );
 
-  return rows.length > 0; // Returns true if there's a match
+    // console.log(rows);
+    return rows.length > 0; // Returns true if there's a match
+  } catch (error) {
+    console.log(error);
+    throw error; // Re-throw the error to be caught by the calling function
+  }
 }

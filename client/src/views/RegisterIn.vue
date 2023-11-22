@@ -10,6 +10,15 @@
         >------------------} Submit {------------------</v-btn
       >
     </v-form>
+    <v-snackbar v-model="snackbar" :timeout="2000">
+      {{ `Successful registration!` }}
+
+      <template v-slot:actions>
+        <v-btn color="blue" variant="text" @click="snackbar = false">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </div>
 </template>
 
@@ -17,6 +26,7 @@
 import { ref } from "vue";
 import axios from "axios";
 
+const snackbar = ref(false);
 const formData = ref({});
 
 const submitForm = () => {
@@ -43,6 +53,8 @@ const submitForm = () => {
     .catch((error) => {
       console.log("Error:", error);
     });
+  snackbar.value = true;
+  formData.value = {};
 };
 </script>
 
