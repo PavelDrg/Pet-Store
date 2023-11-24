@@ -5,6 +5,7 @@ import AddProduct from "../views/AddProduct.vue";
 import AddUser from "../views/RegisterIn.vue";
 import UsersView from "../views/UsersView.vue";
 import Login from "../views/LogIn.vue";
+import AccountView from "../views/AccountView.vue";
 
 const routes = [
   { path: "/", component: HomePage },
@@ -13,6 +14,7 @@ const routes = [
   { path: "/register", component: AddUser },
   { path: "/users", component: UsersView },
   { path: "/login", component: Login },
+  { path: "/account", component: AccountView },
 ];
 
 const router = createRouter({

@@ -8,8 +8,11 @@
     <router-link to="/products">
       <v-btn> Products </v-btn>
     </router-link>
+    <router-link to="/account">
+      <v-btn v-if="activeUser"> My Account </v-btn>
+    </router-link>
     <router-link to="/register">
-      <v-btn> Register </v-btn>
+      <v-btn v-if="!activeUser"> Register </v-btn>
     </router-link>
     <router-link to="/login">
       <v-btn v-if="!activeUser"> Log In </v-btn>

@@ -6,7 +6,15 @@
         <h3 class="headline mb-0">{{ props.user.nume }}</h3>
         <div class="email">
           Email: {{ props.user.email }}
-          <v-form class="form" @submit.prevent="submitForm(formData.email)">
+          <v-form
+            class="form"
+            @submit.prevent="submitForm(formData.email)"
+            v-if="
+              activeUser &&
+              activeUser.email === `admin` &&
+              activeUser.parola === `admin`
+            "
+          >
             <v-text-field
               v-model="formData.email"
               label="New email"
@@ -21,14 +29,31 @@
 
     <!-- Actions (Add to Cart and View) -->
     <v-card-actions>
-      <v-btn @click="deleteUser" color="primary">Delete Account</v-btn>
+      <v-btn
+        @click="deleteUser"
+        color="primary"
+        v-if="
+          activeUser &&
+          activeUser.email === `admin` &&
+          activeUser.parola === `admin`
+        "
+        >Delete Account</v-btn
+      >
     </v-card-actions>
   </v-card>
 </template>
 
 <script setup>
 import axios from "axios";
-import { defineProps, defineEmits, ref } from "vue";
+import { defineProps, defineEmits, ref, computed } from "vue";
+import { useStore } from "vuex";
+
+const store = useStore();
+
+const activeUser = computed(() => {
+  const user = store.state.userAuthenticated;
+  return user;
+});
 
 const props = defineProps({
   user: {

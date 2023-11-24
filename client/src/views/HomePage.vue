@@ -1,5 +1,5 @@
 <template>
-  <div class="page-wrapper">
+  <div>
     <v-app>
       <v-container>
         <v-row>

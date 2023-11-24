@@ -1,24 +1,23 @@
 <template>
   <div class="page-wrapper">
-    <v-container>
-      <v-row>
-        <v-col v-for="(user, index) in users" :key="index" cols="12" md="4">
-          <UserCard :user="user" @deleteUser="init" @updateUser="init" />
-        </v-col>
-      </v-row>
-    </v-container>
-
-    <!-- <p v-if="users.length > 0">{{ users[0] }}</p>
-    <p v-else>Loading...</p> -->
+    <h1>Account details:</h1>
+    <UserCard :user="activeUser" @deleteUser="init" @updateUser="init" />
   </div>
 </template>
 
 <script setup>
 import UserCard from "@/components/UserCard.vue";
 import axios from "axios";
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useStore } from "vuex";
 
+const store = useStore();
 const users = ref([]);
+
+const activeUser = computed(() => {
+  const user = store.state.userAuthenticated;
+  return user;
+});
 
 const init = async () => {
   try {
