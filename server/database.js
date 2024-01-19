@@ -24,6 +24,11 @@ export async function getProducts() {
   return rows;
 }
 
+export async function getCategories() {
+  const [rows] = await pool.query("SELECT * FROM categories");
+  return rows;
+}
+
 export async function getProduct(id) {
   const [rows] = await pool.query(`SELECT * FROM products WHERE id = ?`, [id]);
   return rows[0];
@@ -142,7 +147,7 @@ export async function getSaleDetailsWithProducts() {
 export async function getProductsByCategory(categoryTitle) {
   const [rows] = await pool.query(
     `
-    SELECT p.title, p.stock
+    SELECT p.title, p.stock, p.price, p.contents, p.img_url, p.created
     FROM products p
     JOIN products_categories pc ON p.id = pc.product_id
     JOIN categories c ON pc.category_id = c.id

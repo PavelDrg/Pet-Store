@@ -16,6 +16,7 @@ import {
   getMaxPricesByCategory,
   getAvgPricesByCategory,
   getUsersWithTotalSales,
+  getCategories,
 } from "./database.js";
 import {
   getUsers,
@@ -43,6 +44,11 @@ app.use((req, res, next) => {
 app.get("/products", async (req, res) => {
   const products = await getProducts();
   res.send(products);
+});
+
+app.get("/categories", async (req, res) => {
+  const categories = await getCategories();
+  res.send(categories);
 });
 
 app.get("/products/:id", async (req, res) => {
