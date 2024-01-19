@@ -28,6 +28,9 @@
           >
         </div>
         <div>Stock: {{ product.stock }}</div>
+        <div v-if="product.category_title">
+          Category: {{ product.category_title }}
+        </div>
       </div>
     </v-card-title>
 
@@ -38,7 +41,7 @@
 
     <!-- Actions (Add to Cart and View) -->
     <v-card-actions>
-      <v-btn @click="addToCart" color="primary">Add to Cart</v-btn>
+      <!-- <v-btn @click="addToCart" color="primary">Add to Cart</v-btn> -->
       <v-btn
         @click="deleteProduct"
         color="secondary"
@@ -72,9 +75,9 @@ const props = defineProps({
   },
 });
 
-const addToCart = () => {
-  console.log("Add to Cart");
-};
+// const addToCart = () => {
+//   console.log("Add to Cart");
+// };
 
 const deleteProduct = () => {
   axios

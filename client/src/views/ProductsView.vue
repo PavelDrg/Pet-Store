@@ -16,9 +16,6 @@
         </v-col>
       </v-row>
     </v-container>
-
-    <!-- <p v-if="products.length > 0">{{ products[0] }}</p>
-    <p v-else>Loading...</p> -->
   </div>
 </template>
 

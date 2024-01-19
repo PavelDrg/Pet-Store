@@ -1,7 +1,9 @@
 <template>
   <v-app>
     <NavigationBar />
-    <router-view />
+    <v-container class="app-wrapper">
+      <router-view />
+    </v-container>
   </v-app>
 </template>
 
@@ -19,5 +21,9 @@ import NavigationBar from "./components/NavigationBar.vue";
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.app-wrapper {
+  padding-top: 6rem;
 }
 </style>

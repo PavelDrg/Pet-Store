@@ -6,6 +6,16 @@ import AddUser from "../views/RegisterIn.vue";
 import UsersView from "../views/UsersView.vue";
 import Login from "../views/LogIn.vue";
 import AccountView from "../views/AccountView.vue";
+import ProductsWithCategoriesView from "../views/ProductsWithCategoriesView.vue";
+import TotalSalesView from "../views/TotalSalesView.vue";
+import SaleDetailsWithProductsView from "../views/SaleDetailsWithProductsView.vue";
+import ProductsByCategoryView from "../views/ProductsByCategoryView.vue"; ////////////smecherie
+import SalesDetailsWithUsersView from "../views/SalesDetailsWithUsersView.vue";
+import ProductsSalesDetailsView from "../views/ProductsSalesDetailsView.vue";
+import ProductsMinStockView from "../views/ProductsMinStockView.vue";
+import MaxPricesByCategoryView from "../views/MaxPricesByCategoryView.vue";
+import AvgPricesByCategoryView from "../views/AvgPricesByCategoryView.vue";
+import UsersWithTotalSalesView from "../views/UsersWithTotalSalesView.vue";
 
 const routes = [
   { path: "/", component: HomePage },
@@ -15,6 +25,16 @@ const routes = [
   { path: "/users", component: UsersView },
   { path: "/login", component: Login },
   { path: "/account", component: AccountView },
+  { path: "/productsWithCategories", component: ProductsWithCategoriesView },
+  { path: "/totalSalesView", component: TotalSalesView },
+  { path: "/saleDetailsWithProducts", component: SaleDetailsWithProductsView },
+  { path: "/productsByCategory", component: ProductsByCategoryView }, ////////////smecherie
+  { path: "/salesDetailsWithUsers", component: SalesDetailsWithUsersView },
+  { path: "/productsSalesDetails", component: ProductsSalesDetailsView },
+  { path: "/productsMinStock", component: ProductsMinStockView },
+  { path: "/maxPricesByCategory", component: MaxPricesByCategoryView },
+  { path: "/avgPricesByCategory", component: AvgPricesByCategoryView },
+  { path: "/usersWithTotalSales", component: UsersWithTotalSalesView },
 ];
 
 const router = createRouter({

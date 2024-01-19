@@ -6,6 +6,16 @@ import {
   createProduct,
   deleteProduct,
   updateProductPrice,
+  getProductsWithCategories,
+  getSalesWithUsers,
+  getSaleDetailsWithProducts,
+  getProductsByCategory,
+  getSalesDetailsWithUsers,
+  getProductsSalesDetails,
+  getProductsMinStock,
+  getMaxPricesByCategory,
+  getAvgPricesByCategory,
+  getUsersWithTotalSales,
 } from "./database.js";
 import {
   getUsers,
@@ -173,4 +183,59 @@ app.post("/login", async (req, res) => {
     console.log(error);
     return res.status(500).send("Error verifying user credentials");
   }
+});
+
+///////////////////////////// Interogari simple /////////////////////////////
+
+app.get("/productsWithCategories", async (req, res) => {
+  const productsWithCategories = await getProductsWithCategories();
+  res.send(productsWithCategories);
+});
+
+app.get("/totalSales", async (req, res) => {
+  const salesWithUsers = await getSalesWithUsers();
+  res.send(salesWithUsers);
+});
+
+app.get("/saleDetailsWithProducts", async (req, res) => {
+  const saleDetailsWithProducts = await getSaleDetailsWithProducts();
+  res.send(saleDetailsWithProducts);
+});
+////////smecherie
+app.get("/productsByCategory/:categoryTitle", async (req, res) => {
+  const { categoryTitle } = req.params;
+  const productsByCategory = await getProductsByCategory(categoryTitle);
+  res.send(productsByCategory);
+});
+
+app.get("/salesDetailsWithUsers", async (req, res) => {
+  const salesDetailsWithUsers = await getSalesDetailsWithUsers();
+  res.send(salesDetailsWithUsers);
+});
+
+app.get("/productsSalesDetails", async (req, res) => {
+  const productsSalesDetails = await getProductsSalesDetails();
+  res.send(productsSalesDetails);
+});
+
+///////////////////////////// Interogari complexe /////////////////////////////
+
+app.get("/productsMinStock", async (req, res) => {
+  const productsMinStock = await getProductsMinStock();
+  res.send(productsMinStock);
+});
+
+app.get("/maxPricesByCategory", async (req, res) => {
+  const maxPricesByCategory = await getMaxPricesByCategory();
+  res.send(maxPricesByCategory);
+});
+
+app.get("/avgPricesByCategory", async (req, res) => {
+  const avgPricesByCategory = await getAvgPricesByCategory();
+  res.send(avgPricesByCategory);
+});
+
+app.get("/usersWithTotalSales", async (req, res) => {
+  const usersWithTotalSales = await getUsersWithTotalSales();
+  res.send(usersWithTotalSales);
 });

@@ -35,6 +35,80 @@
           v-bind="props"
           @click="menuActive = !menuActive"
         >
+          Details
+          <v-icon class="ml-1" small>
+            {{ menuActive ? "mdi-chevron-up" : "mdi-chevron-down" }}
+          </v-icon>
+        </v-btn>
+      </template>
+      <v-list>
+        <v-list-item to="/productsWithCategories"
+          >Products and Categories</v-list-item
+        >
+        <v-list-item to="/totalSalesView">Total Sales</v-list-item>
+        <v-list-item to="/saleDetailsWithProducts"
+          >Sale Details With Products</v-list-item
+        >
+        <v-list-item to="/productsByCategory">Products by Category</v-list-item>
+        <v-list-item to="/salesDetailsWithUsers"
+          >Sale Details with Users</v-list-item
+        >
+        <v-list-item to="/productsSalesDetails"
+          >Products Sales Details</v-list-item
+        >
+      </v-list>
+    </v-menu>
+    <v-menu
+      class="navbar--dropdown"
+      offset-y
+      v-if="
+        activeUser &&
+        activeUser.email === `admin` &&
+        activeUser.parola === `admin`
+      "
+    >
+      <template v-slot:activator="{ props }">
+        <v-btn
+          class="navbar--button"
+          v-bind="props"
+          @click="menuActive = !menuActive"
+        >
+          Details - complex
+          <v-icon class="ml-1" small>
+            {{ menuActive ? "mdi-chevron-up" : "mdi-chevron-down" }}
+          </v-icon>
+        </v-btn>
+      </template>
+      <v-list>
+        <v-list-item to="/productsMinStock"
+          >Products with Min Stock</v-list-item
+        >
+        <v-list-item to="/maxPricesByCategory"
+          >Max Price by Category</v-list-item
+        >
+        <v-list-item to="/avgPricesByCategory"
+          >Average Price by Category</v-list-item
+        >
+        <v-list-item to="/usersWithTotalSales"
+          >Users with Total Sales</v-list-item
+        >
+      </v-list>
+    </v-menu>
+    <v-menu
+      class="navbar--dropdown"
+      offset-y
+      v-if="
+        activeUser &&
+        activeUser.email === `admin` &&
+        activeUser.parola === `admin`
+      "
+    >
+      <template v-slot:activator="{ props }">
+        <v-btn
+          class="navbar--button"
+          v-bind="props"
+          @click="menuActive = !menuActive"
+        >
           Admin
           <v-icon class="ml-1" small>
             {{ menuActive ? "mdi-chevron-up" : "mdi-chevron-down" }}
@@ -76,3 +150,5 @@ onBeforeUnmount(() => {
   window.removeEventListener("scroll", handleScroll);
 });
 </script>
+
+<style scoped></style>
