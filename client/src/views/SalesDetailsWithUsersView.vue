@@ -1,4 +1,5 @@
 <template>
+  <h1>Detalii vanzari per user</h1>
   <div class="page-wrapper">
     <DefaultCard
       v-for="saleDetail in salesDetailsWithUsers"

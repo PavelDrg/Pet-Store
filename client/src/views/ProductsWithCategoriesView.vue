@@ -1,5 +1,6 @@
 <template>
   <div class="page-wrapper">
+    <h1>Toate produsele din fiecare categorie</h1>
     <v-container>
       <!-- Loop through unique categories -->
       <v-row

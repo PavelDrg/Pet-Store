@@ -1,4 +1,5 @@
 <template>
+  <h1>Produsele cu stoc minim</h1>
   <div class="page-wrapper">
     <DefaultCard
       v-for="product in productsMinStock"

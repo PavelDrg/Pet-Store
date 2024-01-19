@@ -1,4 +1,5 @@
 <template>
+  <h1>Asociere vanzari cu produse si detalii corespunzatoare</h1>
   <div class="page-wrapper">
     <DefaultCard
       v-for="productSaleDetail in productsSalesDetails"

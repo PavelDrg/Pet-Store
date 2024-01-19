@@ -1,5 +1,6 @@
 <template>
   <div class="page-wrapper">
+    <h1>THE BEST PRODUCTS FOR YOUR PET!</h1>
     <v-container>
       <v-select
         :items="categories.map((category) => category.title)"
@@ -69,4 +70,10 @@ watch(selectedCategory, () => {
 init();
 </script>
 
-<style scoped></style>
+<style scoped>
+h1 {
+  text-align: center;
+  font-size: 3rem;
+  margin: 2rem 0;
+}
+</style>

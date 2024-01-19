@@ -1,4 +1,5 @@
 <template>
+  <h1>Pret maxim per categorie</h1>
   <div class="page-wrapper">
     <DefaultCard
       v-for="category in maxPricesByCategory"

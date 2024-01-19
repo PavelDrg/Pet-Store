@@ -49,7 +49,6 @@
         <v-list-item to="/saleDetailsWithProducts"
           >Sale Details With Products</v-list-item
         >
-        <v-list-item to="/productsByCategory">Products by Category</v-list-item>
         <v-list-item to="/salesDetailsWithUsers"
           >Sale Details with Users</v-list-item
         >

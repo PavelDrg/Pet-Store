@@ -9,7 +9,6 @@ import AccountView from "../views/AccountView.vue";
 import ProductsWithCategoriesView from "../views/ProductsWithCategoriesView.vue";
 import TotalSalesView from "../views/TotalSalesView.vue";
 import SaleDetailsWithProductsView from "../views/SaleDetailsWithProductsView.vue";
-import ProductsByCategoryView from "../views/ProductsByCategoryView.vue"; ////////////smecherie
 import SalesDetailsWithUsersView from "../views/SalesDetailsWithUsersView.vue";
 import ProductsSalesDetailsView from "../views/ProductsSalesDetailsView.vue";
 import ProductsMinStockView from "../views/ProductsMinStockView.vue";
@@ -28,7 +27,6 @@ const routes = [
   { path: "/productsWithCategories", component: ProductsWithCategoriesView },
   { path: "/totalSalesView", component: TotalSalesView },
   { path: "/saleDetailsWithProducts", component: SaleDetailsWithProductsView },
-  { path: "/productsByCategory", component: ProductsByCategoryView }, ////////////smecherie
   { path: "/salesDetailsWithUsers", component: SalesDetailsWithUsersView },
   { path: "/productsSalesDetails", component: ProductsSalesDetailsView },
   { path: "/productsMinStock", component: ProductsMinStockView },

@@ -1,4 +1,5 @@
 <template>
+  <h1>Analiza vanzari (produs, cantitate si detalii)</h1>
   <div class="page-wrapper">
     <DefaultCard
       v-for="saleDetail in saleDetails"

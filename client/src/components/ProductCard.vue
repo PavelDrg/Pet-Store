@@ -6,7 +6,9 @@
     <!-- Product Information -->
     <v-card-title primary-title>
       <div>
-        <h3 class="headline mb-0">{{ product.title }}</h3>
+        <h3 class="headline mb-0">
+          {{ product.product_title ? product.product_title : product.title }}
+        </h3>
         <div class="price">
           Price: {{ product.price }}$
           <v-form

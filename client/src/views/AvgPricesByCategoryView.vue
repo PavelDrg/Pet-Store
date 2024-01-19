@@ -1,4 +1,5 @@
 <template>
+  <h1>Pret mediu per categorie</h1>
   <div class="page-wrapper">
     <DefaultCard
       v-for="category in avgPricesByCategory"

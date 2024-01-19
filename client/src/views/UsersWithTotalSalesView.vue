@@ -1,4 +1,5 @@
 <template>
+  <h1>Vanzari totale per user</h1>
   <div class="page-wrapper">
     <DefaultCard
       v-for="user in usersWithTotalSales"

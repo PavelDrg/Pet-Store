@@ -1,4 +1,5 @@
 <template>
+  <h1>Vanzari total</h1>
   <div class="page-wrapper">
     <DefaultCard
       v-for="sale in sales"
